@@ -1,0 +1,14 @@
+<p>
+    <label for="custom-file-upload">Upload your <a href="https://swagpath.com/pages/artworks-should-be-vector-files"
+    target="_blank">artwork</a> for this product (.svg, .ai, .pdf, .eps, .png):</label><br>
+
+    <!-- Hidden File Input -->
+    <input type="file" name="properties[artwork]" id="custom-file-upload" accept="image/svg+xml, application/postscript, application/pdf, image/png" style="display: none;" onchange="document.getElementById('file-name').textContent = this.files[0].name">
+    
+    <!-- Custom Button -->
+    <label for="custom-file-upload" class="custom-file-upload-button">
+        <i class="fa fa-upload"></i> Choose File
+    </label>
+    <span id="file-name">No file chosen</span>
+    <span class="form__label"><br><b>PNG</b> must be with more than 300dpi</span>
+</p>

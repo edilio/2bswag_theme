@@ -1,0 +1,35 @@
+{% if product.metafields.psrestful.location_decorations %}
+  <div id="decoration-selector">
+    <p>Set Location and decoration to apply:</p>
+    <div class="product-form__input product-form__input--dropdown">
+      <label for="location-select">Location</label>
+      <div class="select">
+        <select id="location-select" name="location_id" class="select__select"></select>
+        <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+          </path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="product-form__input product-form__input--dropdown">
+      <label for="decoration-select">Decoration</label>
+      <div class="select">
+        <select id="decoration-select" name="decoration_id" class="select__select"></select>
+        <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+          </path>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- JSON data exposed -->
+  <script type="application/json" id="location-decorations-data">
+    {% if product.metafields.psrestful.location_decorations %}
+      {{ product.metafields.psrestful.location_decorations.value | json }}
+    {% else %}
+      []
+    {% endif %}
+  </script>
+{% endif %}

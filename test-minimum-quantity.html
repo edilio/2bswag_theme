@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Minimum Quantity Enforcement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .test-case {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .test-case h3 {
+            margin-top: 0;
+        }
+        .quantity {
+            display: inline-block;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .quantity__input {
+            width: 60px;
+            padding: 5px;
+            text-align: center;
+            margin: 0 10px;
+        }
+        .quantity__button {
+            padding: 5px 10px;
+            cursor: pointer;
+            background: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        .quantity__button.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Minimum Quantity Enforcement Test</h1>
+    
+    <div class="test-case">
+        <h3>Test Case 1: Product with minimum quantity of 5</h3>
+        <p>Try typing a value less than 5 and clicking away or changing the value.</p>
+        <quantity-input class="quantity">
+            <button class="quantity__button" name="minus" type="button">−</button>
+            <input
+                class="quantity__input"
+                type="number"
+                id="test1"
+                data-min="5"
+                min="5"
+                value="5"
+                step="1"
+            >
+            <button class="quantity__button" name="plus" type="button">+</button>
+        </quantity-input>
+        <div class="result" id="result1">Current value: 5</div>
+    </div>
+
+    <div class="test-case">
+        <h3>Test Case 2: Product with minimum quantity of 10</h3>
+        <p>Try typing a value less than 10 and clicking away or changing the value.</p>
+        <quantity-input class="quantity">
+            <button class="quantity__button" name="minus" type="button">−</button>
+            <input
+                class="quantity__input"
+                type="number"
+                id="test2"
+                data-min="10"
+                min="10"
+                value="10"
+                step="1"
+            >
+            <button class="quantity__button" name="plus" type="button">+</button>
+        </quantity-input>
+        <div class="result" id="result2">Current value: 10</div>
+    </div>
+
+    <div class="test-case">
+        <h3>Test Case 3: Product with minimum quantity of 1 (default)</h3>
+        <p>Try typing 0 or negative values.</p>
+        <quantity-input class="quantity">
+            <button class="quantity__button" name="minus" type="button">−</button>
+            <input
+                class="quantity__input"
+                type="number"
+                id="test3"
+                data-min="1"
+                min="1"
+                value="1"
+                step="1"
+            >
+            <button class="quantity__button" name="plus" type="button">+</button>
+        </quantity-input>
+        <div class="result" id="result3">Current value: 1</div>
+    </div>
+
+    <script>
+        // Mock PUB_SUB_EVENTS for testing
+        const PUB_SUB_EVENTS = {
+            quantityUpdate: 'quantity:update'
+        };
+        
+        // Mock subscribe function
+        function subscribe(event, callback) {
+            return function() {};
+        }
+    </script>
+    
+    <!-- Include the updated global.js script -->
+    <script src="assets/global.js"></script>
+    
+    <script>
+        // Add event listeners to display current values
+        document.querySelectorAll('.quantity__input').forEach((input, index) => {
+            const resultDiv = document.getElementById(`result${index + 1}`);
+            input.addEventListener('change', () => {
+                resultDiv.innerHTML = `Current value: ${input.value} <strong style="color: green;">✓ Value enforced</strong>`;
+            });
+            input.addEventListener('input', () => {
+                resultDiv.innerHTML = `Current value: ${input.value} (typing...)`;
+            });
+        });
+    </script>
+</body>
+</html>

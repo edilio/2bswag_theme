@@ -1,0 +1,208 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "variant_picker_r34TJt": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "dropdown",
+            "swatch_shape": "square"
+          }
+        },
+        "loc-decoration-selector": {
+          "type": "loc-decoration-selector",
+          "settings": {}
+        },
+        "quantity_selector_ThEpVE": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_GV9AYc": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "collapsible-row-0": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Primary Materials",
+            "icon": "none",
+            "content": "<p>{{ product.metafields.psrestful.primary_material.value }}</p>",
+            "page": "materials-and-care"
+          }
+        },
+        "collapsible-row-2": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Lead Time",
+            "icon": "none",
+            "content": "<p>{{ product.metafields.psrestful.lead_time.value }} days</p>",
+            "page": "merchandising-tips"
+          }
+        },
+        "collapsible-row-1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Imprint Size",
+            "icon": "none",
+            "content": "<p>{{ product.metafields.psrestful.imprint_size.value }}</p>",
+            "page": "product-features"
+          }
+        },
+        "collapsible_tab_MM6qRz": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "Country of Origin",
+            "icon": "none",
+            "content": "<p>{{ product.metafields.psrestful.country_of_origin.value }}</p>",
+            "page": "product-features"
+          }
+        },
+        "collapsible_tab_fBMLkM": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Minimum Order Quantity",
+            "icon": "none",
+            "content": "<p>{{ product.metafields.psrestful.minimum_quantity.value }}</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_dimension": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Dimensions",
+            "icon": "none",
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible_tab_product_packages":{
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Product Packages",
+            "icon": "none",
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible_tab_shipping_packages": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping Packages",
+            "icon": "none",
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible_tab_color_array": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Colors",
+            "icon": "none",
+            "content": "",
+            "page": ""
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "description",
+        "variant_picker_r34TJt",
+        "loc-decoration-selector",
+        "quantity_selector_ThEpVE",
+        "buy_buttons_GV9AYc",
+        "collapsible-row-0",
+        "collapsible-row-2",
+        "collapsible-row-1",
+        "collapsible_tab_MM6qRz",
+        "collapsible_tab_fBMLkM",
+        "collapsible_tab_dimension",
+        "collapsible_tab_product_packages",
+        "collapsible_tab_shipping_packages",
+        "collapsible_tab_color_array",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "",
+        "media_size": "small",
+        "constrain_to_viewport": false,
+        "media_fit": "cover",
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "hide",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "quick-order-list": {
+      "type": "quick-order-list",
+      "disabled": true,
+      "settings": {
+        "show_image": true,
+        "show_sku": true,
+        "color_scheme": "scheme-2",
+        "padding_top": 36,
+        "padding_bottom": 16
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "Other industry favorites",
+        "heading_size": "h2",
+        "products_to_show": 5,
+        "columns_desktop": 5,
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 44
+      }
+    }
+  },
+  "order": [
+    "main",
+    "quick-order-list",
+    "related-products"
+  ]
+}
