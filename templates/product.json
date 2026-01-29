@@ -138,11 +138,11 @@
       "block_order": [
         "title",
         "price",
-        "description",
         "variant_picker_r34TJt",
         "loc-decoration-selector",
         "quantity_selector_ThEpVE",
         "buy_buttons_GV9AYc",
+        "description",
         "collapsible-row-0",
         "collapsible-row-2",
         "collapsible-row-1",
