@@ -371,6 +371,28 @@
                 {{ block.settings.custom_liquid }}
               {%- when 'collapsible_tab' -%}
                 {% assign current_variant = product.selected_or_first_available_variant %}
+
+                {% comment %} Hide collapsible if its metafield data is empty {% endcomment %}
+                {% assign has_collapsible_data = true %}
+                {% if block.settings.heading == 'Primary Materials' and product.metafields.psrestful.primary_material.value == blank %}
+                  {% assign has_collapsible_data = false %}
+                {% elsif block.settings.heading == 'Lead Time' and product.metafields.psrestful.lead_time.value == blank %}
+                  {% assign has_collapsible_data = false %}
+                {% elsif block.settings.heading == 'Imprint Size' and product.metafields.psrestful.imprint_size.value == blank %}
+                  {% assign has_collapsible_data = false %}
+                {% elsif block.settings.heading == 'Minimum Order Quantity' and product.metafields.psrestful.minimum_quantity.value == blank %}
+                  {% assign has_collapsible_data = false %}
+                {% elsif block.settings.heading == 'Dimensions' and current_variant.metafields.psrestful.dimension.value == blank %}
+                  {% assign has_collapsible_data = false %}
+                {% elsif block.settings.heading == 'Product Packages' and current_variant.metafields.psrestful.product_package_array.value == blank %}
+                  {% assign has_collapsible_data = false %}
+                {% elsif block.settings.heading == 'Shipping Packages' and current_variant.metafields.psrestful.shipping_package_array.value == blank %}
+                  {% assign has_collapsible_data = false %}
+                {% elsif block.settings.heading == 'Colors' and current_variant.metafields.psrestful.color_array.value == blank %}
+                  {% assign has_collapsible_data = false %}
+                {% endif %}
+
+                {% if has_collapsible_data %}
                 <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
                   <details id="Details-{{ block.id }}-{{ section.id }}">
                     <summary>
@@ -496,6 +518,7 @@
                     </div>
                   </details>
                 </div>
+                {% endif %}
               {%- when 'quantity_selector' -%}
                 <div
                   id="Quantity-Form-{{ section.id }}"
