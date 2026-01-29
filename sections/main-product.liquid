@@ -253,7 +253,7 @@
                   data-variants-price-breaks="{{ variant_price_breaks | escape }}"
                 ></div>
 
-                {% if price_breaks.size > 0 %}
+                {% if block.settings.show_tier_pricing and price_breaks.size > 0 %}
                   <table id="price-breaks-table">
                     <tr>
                       <th>Quantity</th>
@@ -1060,7 +1060,15 @@
     {
       "type": "price",
       "name": "t:sections.main-product.blocks.price.name",
-      "limit": 1
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_tier_pricing",
+          "default": true,
+          "label": "Show tier pricing table"
+        }
+      ]
     },
     {
       "type": "sku",
