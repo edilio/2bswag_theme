@@ -381,8 +381,7 @@
                                         {{- tier.quantityMin -}}
                                         <span aria-hidden="true">+</span></span
                                       >
-                                      {%- assign tier_price_dollars = tier.price | divided_by: 100.0 -%}
-                                      <span>${{ tier_price_dollars | money_without_currency }}/ea</span>
+                                      <span>${{ tier.price | money_without_currency }}/ea</span>
                                     </li>
                                   {%- endfor -%}
                                 </ul>
