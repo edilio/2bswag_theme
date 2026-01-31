@@ -139,7 +139,33 @@
                             {{- item.product.title | escape -}}
                           </a>
 
-                          {%- if item.original_price != item.final_price -%}
+                          {%- liquid
+                            assign ps_price_breaks = item.variant.metafields.psrestful.part_price_array.value
+                            assign matched_tier_price = nil
+                            if ps_price_breaks.size > 0
+                              for tier in ps_price_breaks
+                                if item.quantity >= tier.quantityMin
+                                  assign matched_tier_price = tier.price
+                                endif
+                              endfor
+                            endif
+                            assign has_tier_discount = false
+                            if matched_tier_price and matched_tier_price < item.original_price
+                              assign has_tier_discount = true
+                              assign tier_line_total = matched_tier_price | times: item.quantity
+                            endif
+                          -%}
+
+                          {%- if has_tier_discount -%}
+                            <div class="cart-item__discounted-prices">
+                              <s class="cart-item__old-price product-option">
+                                {{- item.original_price | money -}}
+                              </s>
+                              <strong class="cart-item__final-price product-option">
+                                ${{ matched_tier_price | money_without_currency }}
+                              </strong>
+                            </div>
+                          {%- elsif item.original_price != item.final_price -%}
                             <div class="cart-item__discounted-prices">
                               <span class="visually-hidden">
                                 {{ 'products.product.price.regular_price' | t }}
@@ -221,7 +247,16 @@
                         <td class="cart-item__totals right" role="cell" headers="CartDrawer-ColumnTotal">
                           {%- render 'loading-spinner' -%}
                           <div class="cart-item__price-wrapper">
-                            {%- if item.original_line_price != item.final_line_price -%}
+                            {%- if has_tier_discount -%}
+                              <div class="cart-item__discounted-prices">
+                                <s class="cart-item__old-price price price--end">
+                                  {{ item.original_line_price | money }}
+                                </s>
+                                <span class="price price--end">
+                                  ${{ tier_line_total | money_without_currency }}
+                                </span>
+                              </div>
+                            {%- elsif item.original_line_price != item.final_line_price -%}
                               <div class="cart-item__discounted-prices">
                                 <span class="visually-hidden">
                                   {{ 'products.product.price.regular_price' | t }}
