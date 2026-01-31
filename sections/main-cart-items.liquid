@@ -223,6 +223,11 @@
                       if item.variant.quantity_price_breaks.size > 0
                         assign has_vol_pricing = true
                       endif
+
+                      assign psrestful_price_breaks = item.variant.metafields.psrestful.part_price_array.value
+                      if psrestful_price_breaks.size > 0 and has_vol_pricing == false
+                        assign has_vol_pricing = true
+                      endif
                     -%}
                     <td class="cart-item__quantity{% if has_qty_rules or has_vol_pricing %} cart-item__quantity--info{% endif %}">
                       <quantity-popover>
@@ -363,6 +368,21 @@
                                       >
                                       {%- assign price = price_break.price | money_with_currency -%}
                                       <span> {{ 'sections.quick_order_list.each' | t: money: price }}</span>
+                                    </li>
+                                  {%- endfor -%}
+                                </ul>
+                              </volume-pricing>
+                            {%- elsif psrestful_price_breaks.size > 0 -%}
+                              <volume-pricing class="parent-display">
+                                <ul class="list-unstyled">
+                                  {%- for tier in psrestful_price_breaks -%}
+                                    <li>
+                                      <span>
+                                        {{- tier.quantityMin -}}
+                                        <span aria-hidden="true">+</span></span
+                                      >
+                                      {%- assign tier_price_dollars = tier.price | divided_by: 100.0 -%}
+                                      <span>${{ tier_price_dollars | money_without_currency }}/ea</span>
                                     </li>
                                   {%- endfor -%}
                                 </ul>
