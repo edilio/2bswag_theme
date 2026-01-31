@@ -58,9 +58,33 @@
                   {%- endif -%}
                 </div>
 
+                {%- liquid
+                  assign adjusted_total = 0
+                  for item in cart.items
+                    assign ps_breaks = item.variant.metafields.psrestful.part_price_array.value
+                    assign tier_match = nil
+                    if ps_breaks.size > 0
+                      for tier in ps_breaks
+                        if item.quantity >= tier.quantityMin
+                          assign tier_match = tier.price
+                        endif
+                      endfor
+                    endif
+                    if tier_match and tier_match < item.original_price
+                      assign item_total = tier_match | times: item.quantity
+                    else
+                      assign item_total = item.final_line_price
+                    endif
+                    assign adjusted_total = adjusted_total | plus: item_total
+                  endfor
+                -%}
                 <div class="totals">
                   <h2 class="totals__total">{{ 'sections.cart.estimated_total' | t }}</h2>
-                  <p class="totals__total-value">{{ cart.total_price | money_with_currency }}</p>
+                  {%- if adjusted_total != cart.total_price -%}
+                    <p class="totals__total-value">${{ adjusted_total | money_without_currency }} {{ cart.currency.iso_code }}</p>
+                  {%- else -%}
+                    <p class="totals__total-value">{{ cart.total_price | money_with_currency }}</p>
+                  {%- endif -%}
                 </div>
 
                 <small class="tax-note caption-large rte">
