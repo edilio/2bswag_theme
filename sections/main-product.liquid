@@ -78,82 +78,7 @@
     <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
   {%- endif -%}
-  <script>
-    function variantChanged(select) {
-      let newValue = select.value
-      console.log("Selected value:", newValue);
-        
-      setTimeout(function() { 
-          let variantId = getVariant(newValue);
-          if (variantId) {
-            document.dispatchEvent(new CustomEvent("variant:change", { detail: { variant: {id: variantId } } }));
-            
-          }
-          }, 200);
-        
-      };
-    
-    document.addEventListener("DOMContentLoaded", function() {
-      // Listen for variant changes (Shopify theme-dependent)
-      document.addEventListener("variant:change", function(event) {
-        console.log('variant:change was launched!')
-        console.log(event)
-        let newVariant = event.detail.variant;
-        if (!newVariant) return;
-    
-        // Get the JSON metafield for the selected variant
-        let priceBreaks = document.querySelector("#variant-data");
-        priceBreaks.setAttribute("data-variant-id", newVariant.id);
-    
-        // Get the part_price_array for the new variant
-        let data = priceBreaks.getAttribute("data-variants-price-breaks");
-        
-        data = JSON.parse(data)
-
-        let metafield = data[newVariant.id];
-    
-        // Update the table
-        let tbody = document.querySelector("#price-breaks-table tbody");
-        tbody.innerHTML = "<tr><th>Quantity</th><th>Price</th><th>Unit</th></tr>"; // Clear existing rows
-    
-        metafield.forEach(price => {
-          let row = `<tr>
-            <td>${price.quantityMin}</td>
-            <td>$${(price.price / 100).toFixed(2)}</td>
-            <td>EA</td>
-          </tr>`;
-          tbody.innerHTML += row;
-        });
-        
-      });
-  
-    });
-
-    document.addEventListener("change", function (event) {
-      const selectElement = event.target.closest("select[id='Option-template--23143160316202__main-0']");
-    
-      if (selectElement) {
-          
-          console.log("Selected Option ID:", selectElement.value);
-          
-          // Add your custom logic here
-          variantChanged(selectElement);
-      }
-    });
-    
-    function getVariant(selectedOption) {
-      let variantData = document.querySelector("#variant-data").getAttribute("data-variants");
-      let productVariants = JSON.parse(variantData.replaceAll('&quot;', '"'));
-      let matchingVariant = productVariants.find(variant => variant.option1 === selectedOption);
-
-      if (matchingVariant) {
-          console.log("Variant ID:", matchingVariant.id);
-          return matchingVariant.id 
-      } else {
-        console.log("No matching Variant ID found for ", selectedOption);
-      }
-    }
-  </script>
+  {%- comment -%} PromoSync tier-pricing block handles tier table display and variant changes automatically {%- endcomment -%}
 
   {% if section.settings.image_zoom == 'hover' %}
     <script id="EnableZoomOnHover-main" src="{{ 'magnify.js' | asset_url }}" defer="defer"></script>
@@ -224,51 +149,7 @@
                   -%}
                 </div>
 
-                {% assign current_variant = product.selected_or_first_available_variant %}
-                {% assign price_breaks = current_variant.metafields.psrestful.part_price_array.value %}
-                {% assign variant_price_breaks = '{' %}
-
-                {% for variant in product.variants %}
-                  {% assign pb = variant.metafields.psrestful.part_price_array.value | json %}
-                  {% assign variant_price_breaks = variant_price_breaks
-                    | append: '"'
-                    | append: variant.id
-                    | append: '":'
-                    | append: pb
-                  %}
-
-                  {% unless forloop.last %}
-                    {% assign variant_price_breaks = variant_price_breaks | append: ',' %}
-                  {% endunless %}
-                {% endfor %}
-
-                {% assign variant_price_breaks = variant_price_breaks | append: '}' %}
-
-                <!-- Hidden element to store JSON data -->
-                <div
-                  id="variant-data"
-                  data-variant-id="{{ current_variant.id }}"
-                  data-variants="{{ product.variants | json | escape }}"
-                  data-price-breaks="{{ price_breaks | escape }}"
-                  data-variants-price-breaks="{{ variant_price_breaks | escape }}"
-                ></div>
-
-                {% if block.settings.show_tier_pricing and price_breaks.size > 0 %}
-                  <table id="price-breaks-table">
-                    <tr>
-                      <th>Quantity</th>
-                      <th>Price</th>
-                      <th>Unit</th>
-                    </tr>
-                    {% for price in price_breaks %}
-                      <tr>
-                        <td>{{ price.quantityMin }}</td>
-                        <td>${{ price.price | money_without_currency }}</td>
-                        <td>EA</td>
-                      </tr>
-                    {% endfor %}
-                  </table>
-                {% endif %}
+                {%- comment -%} PromoSync tier-pricing app block handles volume pricing display {%- endcomment -%}
 
                 {%- if product.quantity_price_breaks_configured? -%}
                   <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
@@ -1073,15 +954,7 @@
     {
       "type": "price",
       "name": "t:sections.main-product.blocks.price.name",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "checkbox",
-          "id": "show_tier_pricing",
-          "default": true,
-          "label": "Show tier pricing table"
-        }
-      ]
+      "limit": 1
     },
     {
       "type": "sku",

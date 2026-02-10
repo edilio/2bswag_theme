@@ -104,33 +104,8 @@
 
                       <a href="{{ item.url }}" class="cart-item__name h4 break">{{ item.product.title | escape }}</a>
 
-                      {%- liquid
-                        assign ps_price_breaks = item.variant.metafields.psrestful.part_price_array.value
-                        assign matched_tier_price = nil
-                        if ps_price_breaks.size > 0
-                          for tier in ps_price_breaks
-                            if item.quantity >= tier.quantityMin
-                              assign matched_tier_price = tier.price
-                            endif
-                          endfor
-                        endif
-                        assign has_tier_discount = false
-                        if matched_tier_price and matched_tier_price < item.original_price
-                          assign has_tier_discount = true
-                          assign tier_line_total = matched_tier_price | times: item.quantity
-                        endif
-                      -%}
-
-                      {%- if has_tier_discount -%}
-                        <div class="cart-item__discounted-prices">
-                          <s class="cart-item__old-price product-option">
-                            {{- item.original_price | money -}}
-                          </s>
-                          <strong class="cart-item__final-price product-option">
-                            ${{ matched_tier_price | money_without_currency }}
-                          </strong>
-                        </div>
-                      {%- elsif item.original_price != item.final_price -%}
+                      {%- comment -%} Unit price display - PromoSync JS handles tier pricing automatically {%- endcomment -%}
+                      {%- if item.original_price != item.final_price -%}
                         <div class="cart-item__discounted-prices">
                           <span class="visually-hidden">
                             {{ 'products.product.price.regular_price' | t }}
@@ -200,24 +175,8 @@
                     <td class="cart-item__totals right medium-hide large-up-hide">
                       {%- render 'loading-spinner' -%}
                       <div class="cart-item__price-wrapper">
-                        {%- if has_tier_discount -%}
-                          <dl class="cart-item__discounted-prices">
-                            <dt class="visually-hidden">
-                              {{ 'products.product.price.regular_price' | t }}
-                            </dt>
-                            <dd>
-                              <s class="cart-item__old-price price price--end">
-                                {{ item.original_line_price | money }}
-                              </s>
-                            </dd>
-                            <dt class="visually-hidden">
-                              {{ 'products.product.price.sale_price' | t }}
-                            </dt>
-                            <dd class="price price--end">
-                              ${{ tier_line_total | money_without_currency }}
-                            </dd>
-                          </dl>
-                        {%- elsif item.original_line_price != item.final_line_price -%}
+                        {%- comment -%} Line total - PromoSync JS handles tier pricing automatically {%- endcomment -%}
+                        {%- if item.original_line_price != item.final_line_price -%}
                           <dl class="cart-item__discounted-prices">
                             <dt class="visually-hidden">
                               {{ 'products.product.price.regular_price' | t }}
@@ -452,24 +411,8 @@
                     <td class="cart-item__totals right small-hide">
                       {%- render 'loading-spinner' -%}
                       <div class="cart-item__price-wrapper">
-                        {%- if has_tier_discount -%}
-                          <dl class="cart-item__discounted-prices">
-                            <dt class="visually-hidden">
-                              {{ 'products.product.price.regular_price' | t }}
-                            </dt>
-                            <dd>
-                              <s class="cart-item__old-price price price--end">
-                                {{ item.original_line_price | money }}
-                              </s>
-                            </dd>
-                            <dt class="visually-hidden">
-                              {{ 'products.product.price.sale_price' | t }}
-                            </dt>
-                            <dd class="price price--end">
-                              ${{ tier_line_total | money_without_currency }}
-                            </dd>
-                          </dl>
-                        {%- elsif item.original_line_price != item.final_line_price -%}
+                        {%- comment -%} Desktop line total - PromoSync JS handles tier pricing automatically {%- endcomment -%}
+                        {%- if item.original_line_price != item.final_line_price -%}
                           <dl class="cart-item__discounted-prices">
                             <dt class="visually-hidden">
                               {{ 'products.product.price.regular_price' | t }}

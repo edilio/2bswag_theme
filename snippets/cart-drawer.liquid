@@ -112,7 +112,6 @@
                     </tr>
                   </thead>
 
-                  {%- assign drawer_adjusted_total = 0 -%}
                   <tbody role="rowgroup">
                     {%- for item in cart.items -%}
                       <tr id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="cart-item" role="row">
@@ -140,36 +139,8 @@
                             {{- item.product.title | escape -}}
                           </a>
 
-                          {%- liquid
-                            assign ps_price_breaks = item.variant.metafields.psrestful.part_price_array.value
-                            assign matched_tier_price = nil
-                            if ps_price_breaks.size > 0
-                              for tier in ps_price_breaks
-                                if item.quantity >= tier.quantityMin
-                                  assign matched_tier_price = tier.price
-                                endif
-                              endfor
-                            endif
-                            assign has_tier_discount = false
-                            if matched_tier_price and matched_tier_price < item.original_price
-                              assign has_tier_discount = true
-                              assign tier_line_total = matched_tier_price | times: item.quantity
-                              assign drawer_adjusted_total = drawer_adjusted_total | plus: tier_line_total
-                            else
-                              assign drawer_adjusted_total = drawer_adjusted_total | plus: item.final_line_price
-                            endif
-                          -%}
-
-                          {%- if has_tier_discount -%}
-                            <div class="cart-item__discounted-prices">
-                              <s class="cart-item__old-price product-option">
-                                {{- item.original_price | money -}}
-                              </s>
-                              <strong class="cart-item__final-price product-option">
-                                ${{ matched_tier_price | money_without_currency }}
-                              </strong>
-                            </div>
-                          {%- elsif item.original_price != item.final_price -%}
+                          {%- comment -%} Unit price display - PromoSync JS handles tier pricing automatically {%- endcomment -%}
+                          {%- if item.original_price != item.final_price -%}
                             <div class="cart-item__discounted-prices">
                               <span class="visually-hidden">
                                 {{ 'products.product.price.regular_price' | t }}
@@ -251,16 +222,8 @@
                         <td class="cart-item__totals right" role="cell" headers="CartDrawer-ColumnTotal">
                           {%- render 'loading-spinner' -%}
                           <div class="cart-item__price-wrapper">
-                            {%- if has_tier_discount -%}
-                              <div class="cart-item__discounted-prices">
-                                <s class="cart-item__old-price price price--end">
-                                  {{ item.original_line_price | money }}
-                                </s>
-                                <span class="price price--end">
-                                  ${{ tier_line_total | money_without_currency }}
-                                </span>
-                              </div>
-                            {%- elsif item.original_line_price != item.final_line_price -%}
+                            {%- comment -%} Line total - PromoSync JS handles tier pricing automatically {%- endcomment -%}
+                            {%- if item.original_line_price != item.final_line_price -%}
                               <div class="cart-item__discounted-prices">
                                 <span class="visually-hidden">
                                   {{ 'products.product.price.regular_price' | t }}
@@ -547,11 +510,8 @@
 
           <div class="totals" role="status">
             <h2 class="totals__total">{{ 'sections.cart.estimated_total' | t }}</h2>
-            {%- if drawer_adjusted_total != cart.total_price -%}
-              <p class="totals__total-value">${{ drawer_adjusted_total | money_without_currency }} {{ cart.currency.iso_code }}</p>
-            {%- else -%}
-              <p class="totals__total-value">{{ cart.total_price | money_with_currency }}</p>
-            {%- endif -%}
+            {%- comment -%} Cart total - PromoSync JS handles tier pricing updates automatically {%- endcomment -%}
+            <p class="totals__total-value">{{ cart.total_price | money_with_currency }}</p>
           </div>
 
           <small class="tax-note caption-large rte">
