@@ -623,8 +623,6 @@
                     </volume-pricing>
                   {%- endif -%}
                 </div>
-              {% when 'loc-decoration-selector' %}
-                  {% render 'loc-decoration-selector', block: block %}
               {%- when 'popup' -%}
                 <modal-opener
                   class="product-popup-modal__opener quick-add-hidden"
@@ -2279,18 +2277,6 @@
           "default": "t:sections.main-product.blocks.icon_with_text.settings.heading_3.default",
           "label": "t:sections.main-product.blocks.icon_with_text.settings.heading_3.label",
           "info": "t:sections.main-product.blocks.icon_with_text.settings.heading.info"
-        }
-      ]
-    },
-    {
-      "type": "loc-decoration-selector",
-      "name": "Decoration Selector",
-      "settings": [
-        {
-          "type": "text",
-          "id": "label",
-          "label": "Label",
-          "default": "Choose your decoration method"
         }
       ]
     }

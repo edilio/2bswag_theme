@@ -31,10 +31,6 @@
             "swatch_shape": "square"
           }
         },
-        "loc-decoration-selector": {
-          "type": "loc-decoration-selector",
-          "settings": {}
-        },
         "quantity_selector_ThEpVE": {
           "type": "quantity_selector",
           "settings": {}
@@ -139,7 +135,6 @@
         "title",
         "price",
         "variant_picker_r34TJt",
-        "loc-decoration-selector",
         "quantity_selector_ThEpVE",
         "buy_buttons_GV9AYc",
         "description",

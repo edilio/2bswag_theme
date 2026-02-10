@@ -60,7 +60,7 @@ shopify theme check --auto-correct
 
 The theme includes custom product personalization features:
 - **Logo Upload**: `snippets/upload-logo.liquid` - File upload for custom logos
-- **Decoration Selector**: `snippets/loc-decoration-selector.liquid`, `assets/decoration-selector.js` - Product decoration options
+- **Decoration Selector**: Provided by PromoSync app via theme app block (`PromoSync Decorations`)
 - **Custom Buy Buttons**: `snippets/buy-buttons.liquid` - Modified purchase flow
 
 ### Important Files
@@ -79,6 +79,20 @@ This theme uses Shopify's Liquid templating language. Key concepts:
 - **Sections**: Dynamic, customizable content blocks
 - **Snippets**: Reusable code fragments included with `{% render 'snippet-name' %}`
 
+### PromoSync App Integration
+
+The theme integrates with the PromoSync app for:
+- **Volume/Tier Pricing**: Display and calculation of volume-based pricing
+- **Location/Decoration Selector**: Theme app block providing cascading dropdowns for product decoration options (uses `psrestful.location_decorations` metafield)
+- **Minimum Quantity Enforcement**: Cart validation for minimum order quantities
+
+To add the decoration selector to the product page:
+1. Go to **Online Store > Themes > Customize**
+2. Navigate to **Product page** template
+3. Click **Add block** and search for **PromoSync Decorations**
+4. Set **Display mode** to `Dropdown selector`
+5. Position after variant picker, before quantity/buy buttons
+
 ### Recent Changes (from git status)
 
 Modified files indicate active development on:
@@ -87,9 +101,7 @@ Modified files indicate active development on:
 - Theme structure (`layout/theme.liquid`)
 - Product template (`templates/product.json`)
 
-New personalization features:
-- `assets/decoration-selector.js` - JavaScript for decoration options
-- `snippets/loc-decoration-selector.liquid` - Decoration selector UI
+Personalization features:
 - `snippets/upload-logo.liquid` - Logo upload interface
 
 ## Development Workflow
