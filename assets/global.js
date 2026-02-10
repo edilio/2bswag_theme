@@ -229,7 +229,7 @@ class QuantityInput extends HTMLElement {
   quantityUpdateUnsubscriber = undefined;
 
   connectedCallback() {
-    this.enforceMinimum();
+    // PromoSync MinQuantityHandler handles minimum enforcement automatically
     this.validateQtyRules();
     this.quantityUpdateUnsubscriber = subscribe(PUB_SUB_EVENTS.quantityUpdate, this.validateQtyRules.bind(this));
   }
@@ -241,12 +241,12 @@ class QuantityInput extends HTMLElement {
   }
 
   onInputChange(event) {
-    this.enforceMinimum();
+    // PromoSync MinQuantityHandler handles minimum enforcement automatically
     this.validateQtyRules();
   }
 
   onInputBlur(event) {
-    this.enforceMinimum();
+    // PromoSync MinQuantityHandler handles minimum enforcement automatically
     this.validateQtyRules();
   }
 
@@ -272,16 +272,6 @@ class QuantityInput extends HTMLElement {
 
     if (this.input.dataset.min === previousValue && event.target.name === 'minus') {
       this.input.value = parseInt(this.input.min);
-    }
-  }
-
-  enforceMinimum() {
-    const minValue = parseInt(this.input.dataset.min) || parseInt(this.input.min) || 1;
-    const currentValue = parseInt(this.input.value) || 0;
-
-    if (currentValue < minValue) {
-      this.input.value = minValue;
-      this.input.dispatchEvent(this.changeEvent);
     }
   }
 

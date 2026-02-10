@@ -281,10 +281,8 @@
             {% # theme-check-disable %}
             {% assign cart_qty = cart | item_count_for_variant: variant.id %}
             {% # theme-check-enable %}
-            {%- liquid
-               assign min_qty = product.metafields.psrestful.minimum_quantity
-            -%}
-            {% render 'quantity-input', variant: variant, min: min_qty %}
+            {%- comment -%} PromoSync MinQuantityHandler sets min from psrestful.minimum_quantity metafield {%- endcomment -%}
+            {% render 'quantity-input', variant: variant %}
           {%- endif -%}
         </div>
         {% if cart_qty > 0 %}
