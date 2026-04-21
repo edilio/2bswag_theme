@@ -9,8 +9,8 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/SwagPath_Logo_for_Shopify_Site.svg",
-    "logo_width": 100,
+    "logo": "shopify://shop_images/2Bswag-blue-103163.jpg",
+    "logo_width": 50,
     "favicon": "shopify://shop_images/2.svg",
     "type_header_font": "lato_n4",
     "heading_scale": 105,
@@ -144,6 +144,18 @@
       }
     },
     "content_for_index": [],
+    "blocks": {
+      "7998720338607617285": {
+        "type": "shopify://apps/promosync/blocks/promo-pricing-engine/019c48c8-9483-7db1-9e67-56f74d85d89d",
+        "disabled": false,
+        "settings": {
+          "enable_cart_pricing": true,
+          "show_strikethrough": true,
+          "show_tier_popover": true,
+          "enable_min_quantity": true
+        }
+      }
+    },
     "color_schemes": {
       "scheme-1": {
         "settings": {

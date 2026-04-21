@@ -44,7 +44,7 @@
         "button"
       ],
       "settings": {
-        "image": "shopify://shop_images/1.png",
+        "image": "shopify://shop_images/2BSwag-hero-v2.jpg",
         "image_overlay_opacity": 40,
         "image_height": "adapt",
         "desktop_content_position": "middle-center",
@@ -63,7 +63,6 @@
         "column1": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/brumate-logo.svg",
             "title": "",
             "text": "",
             "link_label": "",
@@ -73,7 +72,6 @@
         "column2": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Stanley_PMI_logo.svg",
             "title": "",
             "text": "",
             "link_label": "",
@@ -83,7 +81,6 @@
         "column3": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/OtterBoxLogo_BlackPill_2023.svg",
             "title": "",
             "text": "",
             "link_label": "",
@@ -93,7 +90,6 @@
         "column_dBdMm8": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/papermate-logo.svg",
             "title": "",
             "text": "",
             "link_label": "",
@@ -180,13 +176,13 @@
         "featured_collection1": {
           "type": "featured_collection",
           "settings": {
-            "collection": "bags-duffels-accessories"
+            "collection": "backpacks"
           }
         },
         "featured_collection2": {
           "type": "featured_collection",
           "settings": {
-            "collection": "writing-instruments"
+            "collection": "glass"
           }
         },
         "featured_collection3": {
@@ -198,13 +194,13 @@
         "featured_collection4": {
           "type": "featured_collection",
           "settings": {
-            "collection": "portfolios-notebooks"
+            "collection": "bottle"
           }
         },
         "featured_collection5": {
           "type": "featured_collection",
           "settings": {
-            "collection": "amenities"
+            "collection": "mug"
           }
         }
       },
@@ -236,7 +232,7 @@
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "new-arriavals",
+        "collection": "new-arrivals",
         "products_to_show": 6,
         "columns_desktop": 5,
         "full_width": false,
