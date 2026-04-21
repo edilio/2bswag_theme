@@ -17,7 +17,7 @@
         "image_PJBMxG": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/SwagPath_Logo_for_Shopify_Site_ca026c16-24e2-4316-9832-7102a0fd625e.svg",
+            "image": "shopify://shop_images/pollinator-impact.jpg",
             "image_width": 240,
             "alignment": "center"
           }
@@ -26,7 +26,7 @@
           "type": "link_list",
           "settings": {
             "heading": "About Us",
-            "menu": "about-us"
+            "menu": ""
           }
         },
         "link_list_i4ePkU": {

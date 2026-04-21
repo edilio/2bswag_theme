@@ -20,9 +20,15 @@
           "type": "price",
           "settings": {}
         },
-        "description": {
-          "type": "description",
-          "settings": {}
+        "promosync_tier_pricing_fbMzwd": {
+          "type": "shopify://apps/promosync/blocks/tier-pricing/019c48c8-9483-7db1-9e67-56f74d85d89d",
+          "settings": {
+            "layout": "horizontal",
+            "show_header": true,
+            "show_unit": true,
+            "unit_label": "EA",
+            "table_style": "standard"
+          }
         },
         "variant_picker_r34TJt": {
           "type": "variant_picker",
@@ -35,11 +41,29 @@
           "type": "quantity_selector",
           "settings": {}
         },
+        "promosync_location_decorations_mtza4t": {
+          "type": "shopify://apps/promosync/blocks/location-decorations/019c48c8-9483-7db1-9e67-56f74d85d89d",
+          "settings": {
+            "mode": "selector",
+            "title": "Decoration Locations",
+            "location_label": "Location",
+            "decoration_label": "Decoration",
+            "location_placeholder": "Select a location",
+            "decoration_placeholder": "Select a decoration"
+          }
+        },
         "buy_buttons_GV9AYc": {
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "heading": "Description",
+            "icon": "none"
           }
         },
         "collapsible-row-0": {
@@ -97,7 +121,7 @@
             "page": ""
           }
         },
-        "collapsible_tab_product_packages":{
+        "collapsible_tab_product_packages": {
           "type": "collapsible_tab",
           "settings": {
             "heading": "Product Packages",
@@ -134,8 +158,10 @@
       "block_order": [
         "title",
         "price",
+        "promosync_tier_pricing_fbMzwd",
         "variant_picker_r34TJt",
         "quantity_selector_ThEpVE",
+        "promosync_location_decorations_mtza4t",
         "buy_buttons_GV9AYc",
         "description",
         "collapsible-row-0",
