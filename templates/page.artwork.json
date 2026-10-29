@@ -1,0 +1,134 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 0
+      }
+    },
+    "artwork_guide": {
+      "type": "rich-text",
+      "blocks": {
+        "intro_caption": {
+          "type": "caption",
+          "settings": {
+            "caption": "Artwork guidelines",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "intro_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Why do we ask you for a vector file?",
+            "heading_size": "h1"
+          }
+        },
+        "why_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Why Vector Files?",
+            "heading_size": "h2"
+          }
+        },
+        "why_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Vector files are essential for high-quality printing because they can be scaled without losing resolution. Unlike raster images, which are made up of pixels, vector images use mathematical formulas to create shapes, making them ideal for logo and artwork submissions.</p>"
+          }
+        },
+        "what_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "What Are Vector Files?",
+            "heading_size": "h2"
+          }
+        },
+        "what_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Vector files are digital images created using paths or lines rather than pixels. Common vector file formats include:</p><ul><li><strong>.AI</strong> (Adobe Illustrator)</li><li><strong>.EPS</strong> (Encapsulated PostScript)</li><li><strong>.SVG</strong> (Scalable Vector Graphics)</li><li><strong>.PDF</strong> (Portable Document Format)</li></ul>"
+          }
+        },
+        "raster_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Why Not Raster Files?",
+            "heading_size": "h2"
+          }
+        },
+        "raster_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Raster images (like JPEGs or PNGs) are made up of pixels. When these images are enlarged, they often become blurry or pixelated, which can result in poor print quality. This is why we recommend using vector files.</p><p>If you only have a PNG, make sure it is at least 300 dpi at the size it will be printed.</p>"
+          }
+        },
+        "convert_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "How to Convert Your Artwork to a Vector File",
+            "heading_size": "h2"
+          }
+        },
+        "convert_text": {
+          "type": "text",
+          "settings": {
+            "text": "<ol><li><strong>Use Adobe Illustrator:</strong> Open your image in Illustrator and use the \"Image Trace\" feature to convert it into a vector.</li><li><strong>Try Inkscape:</strong> A free alternative to Illustrator, Inkscape also allows you to create vector images.</li><li><strong>Save as a Vector File:</strong> After conversion, save your file in one of the vector formats (.AI, .EPS, .SVG, .PDF).</li></ol>"
+          }
+        },
+        "questions_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Still Have Questions?",
+            "heading_size": "h2"
+          }
+        },
+        "questions_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Feel free to contact our support team for more help.</p>"
+          }
+        },
+        "contact_button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Contact us",
+            "button_link": "shopify://pages/contact",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "intro_caption",
+        "intro_heading",
+        "why_heading",
+        "why_text",
+        "what_heading",
+        "what_text",
+        "raster_heading",
+        "raster_text",
+        "convert_heading",
+        "convert_text",
+        "questions_heading",
+        "questions_text",
+        "contact_button"
+      ],
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "padding_top": 16,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "artwork_guide"
+  ]
+}
