@@ -127,7 +127,7 @@
         "questions_text": {
           "type": "text",
           "settings": {
-            "text": "<p>Feel free to contact our support team for more help.</p>"
+            "text": "<p>Feel free to <a href=\"/pages/contact\" title=\"Contact us\">contact our support team</a> for more help, or send your artwork along with your order and we will review it for you.</p>"
           }
         },
         "contact_button": {
