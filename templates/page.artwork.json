@@ -7,7 +7,7 @@
         "padding_bottom": 0
       }
     },
-    "artwork_guide": {
+    "artwork_intro": {
       "type": "rich-text",
       "blocks": {
         "intro_caption": {
@@ -50,7 +50,28 @@
           "settings": {
             "text": "<p>Vector files are digital images created using paths or lines rather than pixels. Common vector file formats include:</p><ul><li><strong>.AI</strong> (Adobe Illustrator)</li><li><strong>.EPS</strong> (Encapsulated PostScript)</li><li><strong>.SVG</strong> (Scalable Vector Graphics)</li><li><strong>.PDF</strong> (Portable Document Format)</li></ul>"
           }
-        },
+        }
+      },
+      "block_order": [
+        "intro_caption",
+        "intro_heading",
+        "why_heading",
+        "why_text",
+        "what_heading",
+        "what_text"
+      ],
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "padding_top": 16,
+        "padding_bottom": 0
+      }
+    },
+    "artwork_formats": {
+      "type": "rich-text",
+      "blocks": {
         "raster_heading": {
           "type": "heading",
           "settings": {
@@ -76,7 +97,26 @@
           "settings": {
             "text": "<ol><li><strong>Use Adobe Illustrator:</strong> Open your image in Illustrator and use the \"Image Trace\" feature to convert it into a vector.</li><li><strong>Try Inkscape:</strong> A free alternative to Illustrator, Inkscape also allows you to create vector images.</li><li><strong>Save as a Vector File:</strong> After conversion, save your file in one of the vector formats (.AI, .EPS, .SVG, .PDF).</li></ol>"
           }
-        },
+        }
+      },
+      "block_order": [
+        "raster_heading",
+        "raster_text",
+        "convert_heading",
+        "convert_text"
+      ],
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "artwork_questions": {
+      "type": "rich-text",
+      "blocks": {
         "questions_heading": {
           "type": "heading",
           "settings": {
@@ -103,16 +143,6 @@
         }
       },
       "block_order": [
-        "intro_caption",
-        "intro_heading",
-        "why_heading",
-        "why_text",
-        "what_heading",
-        "what_text",
-        "raster_heading",
-        "raster_text",
-        "convert_heading",
-        "convert_text",
         "questions_heading",
         "questions_text",
         "contact_button"
@@ -122,13 +152,15 @@
         "content_alignment": "left",
         "color_scheme": "scheme-1",
         "full_width": false,
-        "padding_top": 16,
+        "padding_top": 0,
         "padding_bottom": 52
       }
     }
   },
   "order": [
     "main",
-    "artwork_guide"
+    "artwork_intro",
+    "artwork_formats",
+    "artwork_questions"
   ]
 }
